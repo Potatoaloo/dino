@@ -359,3 +359,26 @@ def gameplay():
                         if event.key == pygame.K_ESCAPE:
                             g_exit = True
                             g_Over = False
+                                
+                                
+    if event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
+                            g_Over = False
+                            gameplay()
+            highScore.update(highest_scores)
+            if pygame.display.get_surface() != None:
+                gameover_display_message(rbtn_image, gmo_image)
+                if highest_scores != 0:
+                    highScore.draw()
+                    screen_layout_display.blit(ado_image, ado_rect)
+                pygame.display.update()
+            time_clock.tick(FPS)
+
+    pygame.quit()
+    quit()
+
+def main():
+    isGameQuit = introduction_screen()
+    if not isGameQuit:
+        gameplay()
+
+main()
